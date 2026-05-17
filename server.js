@@ -1,5 +1,8 @@
-// Loads the configuration from config.env to process.env
-require('dotenv').config({ path: './config.env' });
+// Intenta cargar config.env de forma opcional (solo para tu computadora local)
+const fs = require('fs');
+if (fs.existsSync('./config.env')) {
+  require('dotenv').config({ path: './config.env' });
+}
 
 const express = require('express');
 const cors = require('cors');
@@ -14,7 +17,7 @@ app.use(express.json());
 app.use(require('./routes/record'));
 
 // Global error handling
-app.use(function (err, _req, res) {
+app.use(function (err, _req, res,) {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
