@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "engines": {
     "node": "12"
   },
@@ -9,8 +9,7 @@
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "format": "prettier --single-quote --check .",
-    "prepare": "cd ../ && husky install server/.husky"
+    "format": "prettier --single-quote --check ."
   },
   "dependencies": {
     "cors": "^2.8.5",
