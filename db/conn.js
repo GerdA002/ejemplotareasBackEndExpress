@@ -1,6 +1,11 @@
 const { MongoClient } = require('mongodb');
-const connectionString = process.env.ATLAS_URI;
-const mongoURL = process.env.MONGO_URL || connectionString
+// Usamos DIRECTAMENTE la variable de tu Atlas de MongoDB
+const mongoURL = process.env.ATLAS_URI;
+
+if (!mongoURL) {
+  console.error('Error crítco: La variable de entorno ATLAS_URI no está definida.');
+  process.exit(1);
+}
 
 const client = new MongoClient(mongoURL, {
   useNewUrlParser: true,
@@ -17,7 +22,7 @@ module.exports = {
       }
 
       dbConnection = db.db('ejemplo');
-      console.log('Successfully connected to MongoDB.');
+      console.log('Successfully connected to MongoDB Atlas.');
 
       return callback();
     });
